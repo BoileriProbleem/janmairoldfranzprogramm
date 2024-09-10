@@ -1,3 +1,3 @@
 tõepoolest
 Jan Franz Mairold
-Teeme programmi, mis otsib internetist õlu hindasi ja alkoholi sisaldust ning annab soovituse mida osta hinna ja etanooli suhte põhjal.
+Teeme programmi, mis otsib internetist erinevad õlled ja esitab need veebilehele, kus me arvutame välja iga õlu etanooli ja hinna suhte, et inimene teaks, mis hinna eest ta endale kui palju etanooli saab.
