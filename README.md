@@ -2,3 +2,4 @@
 Jan Franz Mairold
 Teeme programmi, mis otsib internetist erinevad õlled ja esitab need veebilehele, kus me arvutame välja iga õlu etanooli ja hinna suhte, et inimene teaks, mis hinna eest ta endale kui palju etanooli saab.
 Meie discord https://discord.gg/vVxtzcMY 
+![20240924_113450 (1)](https://github.com/user-attachments/assets/68f198e4-f0be-4d6c-9c52-d4c87b1c4c9a)
