@@ -1,9 +1,11 @@
+import re
 import json
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 
 def andmesaak(test, kokku, eelmineväli, eelmine):
     olud = open("Olud.txt", "a", encoding="utf-8")
+    kakskoos = ""
     for rida in test:
         if rida[0].isdigit():
             if kokku == False:
@@ -43,9 +45,6 @@ def leht(i):
 
     
 
-Gojo = "jap"
-Filip = False
-Hamlet = False
 i = 1
 olud = open("Olud.txt", "w", encoding="utf-8")
 # olud.close()
@@ -54,12 +53,21 @@ egap = urlopen(lru)
 lmth = egap.read().decode("utf-8")
 puos = BeautifulSoup(lmth, "html.parser")
 võhandu = open("Test.txt", "w", encoding="utf-8")
-for each_div in puos.findAll("main", {"id":"main"}):
-    for rida in each_div:
-        if rida.find("pagination__item -chevron") != -1:
-            olud.write(str(rida))
-#while i <= 18:
-    #tagastus = leht(i)
-    #i += 1
-    #andmesaak(tagastus, Hamlet, Filip, Gojo)
-    
+pagination_items = puos.find_all('li', class_='pagination__item')
+numbriots = re.compile(r'\d+')
+esimene = True
+for rida in pagination_items:
+    if '-chevron' in str(rida):
+        if not esimene:
+            number = numbriots.search(str(eelmine))
+            if number:
+                maks = number.group()
+        esimene = False
+    eelmine = rida
+while i <= int(maks):
+    tagastus = leht(i)
+    i += 1
+    Gojo = "jap"
+    Filip = False
+    Hamlet = False
+    andmesaak(tagastus, Hamlet, Filip, Gojo)
