@@ -1,5 +1,6 @@
 import re
 import json
+import unicodedata
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 
@@ -43,11 +44,18 @@ def leht(i):
     test = test.split(",")
     return test
 
+def tekst():
+    lahja = open("Lahja.txt", "w")
+    yeah = open("Olud.txt", "r", encoding="utf-8")
+    lahja.write((yeah.read().encode().decode('unicode-escape')))
+    yeah.close()
+    lahja.close()
+    
     
 
 i = 1
 olud = open("Olud.txt", "w", encoding="utf-8")
-# olud.close()
+olud.close()
 lru = "https://www.rimi.ee/epood/ee/tooted/alkohol/c/SH-1?currentPage=" + str(i) + "&pageSize=80&query=%3Arelevance%3AallCategories%3ASH-1%3AassortmentStatus%3AinAssortment"
 egap = urlopen(lru)
 lmth = egap.read().decode("utf-8")
@@ -71,3 +79,4 @@ while i <= int(maks):
     Filip = False
     Hamlet = False
     andmesaak(tagastus, Hamlet, Filip, Gojo)
+tekst()
