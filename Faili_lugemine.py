@@ -45,11 +45,13 @@ def leht(i):
     return test
 
 def tekst():
-    lahja = open("Lahja.txt", "w")
-    yeah = open("Olud.txt", "r", encoding="utf-8")
-    lahja.write((yeah.read().encode().decode('unicode-escape')))
-    yeah.close()
-    lahja.close()
+    with open("Olud.txt", "r", encoding="utf-8") as yeah:
+        tekst = yeah.read().replace(r'\/', '/')
+        tekst = tekst.replace("\u015b", "ś")
+        decoded_tekst = tekst.encode('utf-8').decode('unicode-escape')
+    
+    with open("Lahja.txt", "w", encoding="utf-8") as lahja:
+        lahja.write(decoded_tekst)
     
     
 
