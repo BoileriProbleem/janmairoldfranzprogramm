@@ -1,6 +1,4 @@
 import re
-import json
-import unicodedata
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 
@@ -34,7 +32,6 @@ def leht(i):
     html = page.read().decode("utf-8")
     soup = BeautifulSoup(html, "html.parser")
     test = open("Test.txt", "w", encoding="utf-8")
-    kogu_tekst = soup.get_text()
     data = soup.find('script', type='text/plain').get_text()
     test.write(data)
     test.close()
